@@ -1,0 +1,18 @@
+syntax="proto3";
+option go_package="/pb";
+
+
+service FileService {
+    rpc Upload (stream FileUploadRequest) returns (UploadResponse) {}
+}
+
+message FileUploadRequest {
+    string filename = 1;
+    bytes chunk = 2;
+    int32 chunk_number = 3;
+}
+
+message UploadResponse {
+    string filename = 1;
+    int32 size = 2;
+}
